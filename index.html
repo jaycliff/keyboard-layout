@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+        <title>Keyboard Map JS</title>
+        <style type="text/css">
+            .clearfix:before,
+            .clearfix:after {
+                content: " ";
+                display: block;
+                font-size: 0;
+                height: 0;
+                line-height: 0;
+                opacity: 0;
+                overflow: hidden;
+                visibility: hidden;
+            }
+            
+            .clearfix:after {
+                clear: both;
+            }
+            
+            #keyboard-map-wrap,
+            #keyboard-map-wrap .key {
+                border: solid 1px #c0c0c0;
+            }
+            
+            keyboard-map-wrap .key {
+                border-radius: 2px;
+            }
+            
+            #keyboard-map-wrap {
+                border-radius: 2px;
+                float: left;
+                margin-top: 20px;
+                padding: 16px 12px 64px;
+            }
+            
+            #keyboard-map-wrap .section {
+                float: left;
+            }
+            
+            #keyboard-map-wrap .row {
+                margin-top: 2px;
+            }
+            
+            #keyboard-map-wrap .row.shift-up {
+                margin-top: -2px;
+            }
+            
+            #keyboard-map-wrap .row:first-child {
+                margin-top: 0;
+            }
+            
+            #keyboard-map-wrap .key-group {
+                float: left;
+            }
+            
+            #keyboard-map-wrap .row.shift-up .key-group {
+                margin-top: -18px;
+            }
+            
+            #keyboard-map-wrap .section .row .key-group:first-child {
+                margin-left: 0 !important;
+            }
+            
+            #keyboard-map-wrap .key,
+            #keyboard-map-wrap .dummy,
+            #keyboard-map-wrap .filler {
+                border-radius: 2px;
+                float: left;
+                font-family: Arial;
+                font-size: 8px;
+                height: 16px;
+                line-height: 16px;
+                margin-left: 2px;
+                overflow: hidden;
+                text-align: center;
+                text-indent: -999em;
+                width: 16px;
+            }
+            
+            #keyboard-map-wrap .filler {
+                border: solid 1px #c0c0c0;
+                visibility: hidden;
+            }
+            
+            #keyboard-map-wrap .dummy {
+                border: solid 1px #c0c0c0;
+                opacity: 0.5;
+            }
+            
+            #keyboard-map-wrap .key {
+                cursor: pointer;
+            }
+            
+            #keyboard-map-wrap .key:hover {
+                background-color: pink;
+            }
+            
+            #keyboard-map-wrap .key.selected {
+                background-color: #ff8888;
+                border: solid 1px red;
+                cursor: default;
+            }
+            
+            #keyboard-map-wrap .row.shift-up .key {
+                position: relative;
+                z-index: 1;
+            }
+            
+            #keyboard-map-wrap .filler:first-child,
+            #keyboard-map-wrap .dummy:first-child,
+            #keyboard-map-wrap .key:first-child {
+                margin-left: 0;
+            }
+            
+            #keyboard-map-wrap .key[data-key="backspace"] {
+                width: 36px;
+            }
+            
+            #keyboard-map-wrap .key[data-key="tab"] {
+                width: 26px;
+            }
+            
+            #keyboard-map-wrap .key[data-key="\\"] {
+                width: 26px;
+            }
+            
+            #keyboard-map-wrap .key[data-key="caps lock"] {
+                width: 32px;
+            }
+            
+            #keyboard-map-wrap .key[data-key="enter"] {
+                width: 40px;
+            }
+            
+            #keyboard-map-wrap .key[data-key="left shift"] {
+                width: 42px;
+            }
+            
+            #keyboard-map-wrap .key[data-key="right shift"] {
+                width: 50px;
+            }
+            
+            #keyboard-map-wrap .key[data-key="left ctrl"],
+            #keyboard-map-wrap .key[data-key="right ctrl"] {
+                width: 26px;
+            }
+            
+            #keyboard-map-wrap .dummy[data-key="windows"],
+            #keyboard-map-wrap .key[data-key="left alt"],
+            #keyboard-map-wrap .key[data-key="right alt"],
+            #keyboard-map-wrap .dummy[data-key="fn"],
+            #keyboard-map-wrap .key[data-key="context"] {
+                width: 22px;
+            }
+            
+            #keyboard-map-wrap .key[data-key="spacebar"] {
+                width: 106px;
+            }
+            
+            #keyboard-map-wrap .key[data-key="numpad +"],
+            #keyboard-map-wrap .key[data-key="numpad enter"] {
+                height: 36px;
+                position: relative;
+                z-index: 1;
+            }
+            
+            #keyboard-map-wrap .key[data-key="numpad 0"] {
+                width: 36px;
+            }
+            
+            #keyboard-map-wrap .section[data-section="0"] div[data-row="0"] .key-group {
+                margin-left: 13px;
+            }
+            
+            #keyboard-map-wrap .section[data-section="0"] div[data-row="0"] .key-group:nth-of-type(2) {
+                margin-left: 20px;
+            }
+            
+            #keyboard-map-wrap .section[data-section="0"] div[data-row="0"] .key-group:nth-of-type(5) {
+                margin-left: 12px;
+            }
+            
+            #keyboard-map-wrap .section[data-section="0"] .row:nth-of-type(2) {
+                margin-top: 6px;
+            }
+            
+            #keyboard-map-wrap .section[data-section="0"] div[data-row="1"] .key-group,
+            #keyboard-map-wrap .section[data-section="0"] div[data-row="2"] .key-group,
+            #keyboard-map-wrap .section[data-section="0"] div[data-row="4"] .key-group,
+            #keyboard-map-wrap .section[data-section="0"] div[data-row="5"] .key-group {
+                margin-left: 12px;
+            }
+            
+            #keyboard-map-wrap .section[data-info="numpad"] {
+                margin-left: 12px;
+                margin-top: 24px;
+            }
+        </style>
+        <!--
+        <link rel="shortcut icon" href="package/style/core/images/favicon.ico" />
+        -->
+        <!-- <link rel="stylesheet" type="text/css" href="style.css" /> -->
+        <script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+        <script type="text/javascript">
+            jQuery(document).ready(function ($) {
+                "use strict";
+                var selected = null;
+                $('.key').on('mousedown touchstart', function (event) {
+                    event.preventDefault();
+                    if (this !== selected) {
+                        if (selected) {
+                            selected.classList.remove('selected');
+                        }
+                        selected = this;
+                        this.classList.add('selected');
+                    } else {
+                        this.classList.remove('selected');
+                        selected = null;
+                    }
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div id="keyboard-map-wrap">
+            <div class="section" data-section="0">
+                <div class="row clearfix" data-row="0">
+                    <div class="key-group">
+                        <div class="key" data-key="esc">Esc</div>
+                    </div>
+                    <div class="key-group">
+                        <div class="key" data-key="f1">F1</div>
+                        <div class="key" data-key="f2">F2</div>
+                        <div class="key" data-key="f3">F3</div>
+                        <div class="key" data-key="f4">F4</div>
+                    </div>
+                    <div class="key-group">
+                        <div class="key" data-key="f5">F5</div>
+                        <div class="key" data-key="f6">F6</div>
+                        <div class="key" data-key="f7">F7</div>
+                        <div class="key" data-key="f8">F8</div>
+                    </div>
+                    <div class="key-group">
+                        <div class="key" data-key="f9">F9</div>
+                        <div class="key" data-key="f10">F10</div>
+                        <div class="key" data-key="f11">F11</div>
+                        <div class="key" data-key="f12">F12</div>
+                    </div>
+                    <div class="key-group">
+                        <div class="key" data-key="print screen">PrSc</div>
+                        <div class="key" data-key="scroll lock"></div>
+                        <div class="key" data-key="pause"></div>
+                    </div>
+                </div>
+                <div class="row clearfix" data-row="1">
+                    <div class="key-group">
+                        <div class="key" data-key="`"></div>
+                        <div class="key" data-key="1"></div>
+                        <div class="key" data-key="2"></div>
+                        <div class="key" data-key="3"></div>
+                        <div class="key" data-key="4"></div>
+                        <div class="key" data-key="5"></div>
+                        <div class="key" data-key="6"></div>
+                        <div class="key" data-key="7"></div>
+                        <div class="key" data-key="8"></div>
+                        <div class="key" data-key="9"></div>
+                        <div class="key" data-key="0"></div>
+                        <div class="key" data-key="-"></div>
+                        <div class="key" data-key="="></div>
+                        <div class="key" data-key="backspace"></div>
+                    </div>
+                    <div class="key-group">
+                        <div class="key" data-key="insert"></div>
+                        <div class="key" data-key="home"></div>
+                        <div class="key" data-key="page up"></div>
+                    </div>
+                </div>
+                <div class="row clearfix" data-row="2">
+                    <div class="key-group">
+                        <div class="key" data-key="tab"></div>
+                        <div class="key" data-key="q"></div>
+                        <div class="key" data-key="w"></div>
+                        <div class="key" data-key="e"></div>
+                        <div class="key" data-key="r"></div>
+                        <div class="key" data-key="t"></div>
+                        <div class="key" data-key="y"></div>
+                        <div class="key" data-key="u"></div>
+                        <div class="key" data-key="i"></div>
+                        <div class="key" data-key="o"></div>
+                        <div class="key" data-key="p"></div>
+                        <div class="key" data-key="["></div>
+                        <div class="key" data-key="]"></div>
+                        <div class="key" data-key="\"></div>
+                    </div>
+                    <div class="key-group">
+                        <div class="key" data-key="delete"></div>
+                        <div class="key" data-key="end"></div>
+                        <div class="key" data-key="page down"></div>
+                    </div>
+                </div>
+                <div class="row clearfix" data-row="3">
+                    <div class="key-group">
+                        <div class="key" data-key="caps lock"></div>
+                        <div class="key" data-key="a"></div>
+                        <div class="key" data-key="s"></div>
+                        <div class="key" data-key="d"></div>
+                        <div class="key" data-key="f"></div>
+                        <div class="key" data-key="g"></div>
+                        <div class="key" data-key="h"></div>
+                        <div class="key" data-key="j"></div>
+                        <div class="key" data-key="k"></div>
+                        <div class="key" data-key="l"></div>
+                        <div class="key" data-key=";"></div>
+                        <div class="key" data-key="'"></div>
+                        <div class="key" data-key="enter"></div>
+                    </div>
+                </div>
+                <div class="row clearfix" data-row="4">
+                    <div class="key-group">
+                        <div class="key" data-key="left shift"></div>
+                        <div class="key" data-key="z"></div>
+                        <div class="key" data-key="x"></div>
+                        <div class="key" data-key="c"></div>
+                        <div class="key" data-key="v"></div>
+                        <div class="key" data-key="b"></div>
+                        <div class="key" data-key="n"></div>
+                        <div class="key" data-key="m"></div>
+                        <div class="key" data-key=","></div>
+                        <div class="key" data-key="."></div>
+                        <div class="key" data-key="/"></div>
+                        <div class="key" data-key="right shift"></div>
+                    </div>
+                    <div class="key-group">
+                        <div class="filler"></div>
+                        <div class="key" data-key="arrow up"></div>
+                        <div class="filler"></div>
+                    </div>
+                </div>
+                <div class="row clearfix" data-row="5">
+                    <div class="key-group">
+                        <div class="key" data-key="left ctrl"></div>
+                        <div class="dummy" data-key="windows"></div>
+                        <div class="key" data-key="left alt"></div>
+                        <div class="key" data-key="spacebar"></div>
+                        <div class="key" data-key="right alt"></div>
+                        <div class="dummy" data-key="fn"></div>
+                        <div class="key" data-key="context"></div>
+                        <div class="key" data-key="right ctrl"></div>
+                    </div>
+                    <div class="key-group">
+                        <div class="key" data-key="arrow left"></div>
+                        <div class="key" data-key="arrow down"></div>
+                        <div class="key" data-key="arrow right"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="section" data-section="1" data-info="numpad">
+                <div class="row clearfix" data-row="0">
+                    <div class="key-group">
+                        <div class="key" data-key="num lock"></div>
+                        <div class="key" data-key="numpad /"></div>
+                        <div class="key" data-key="numpad *"></div>
+                        <div class="key" data-key="numpad -"></div>
+                    </div>
+                </div>
+                <div class="row clearfix" data-row="1">
+                    <div class="key-group">
+                        <div class="key" data-key="numpad 7"></div>
+                        <div class="key" data-key="numpad 8"></div>
+                        <div class="key" data-key="numpad 9"></div>
+                        <div class="key" data-key="numpad +"></div>
+                    </div>
+                </div>
+                <div class="row shift-up clearfix" data-row="2">
+                    <div class="key-group">
+                        <div class="key" data-key="numpad 4"></div>
+                        <div class="key" data-key="numpad 5"></div>
+                        <div class="key" data-key="numpad 6"></div>
+                        <div class="filler"></div>
+                    </div>
+                </div>
+                <div class="row clearfix" data-row="3">
+                    <div class="key-group">
+                        <div class="key" data-key="numpad 1"></div>
+                        <div class="key" data-key="numpad 2"></div>
+                        <div class="key" data-key="numpad 3"></div>
+                        <div class="key" data-key="numpad enter"></div>
+                    </div>
+                </div>
+                <div class="row shift-up clearfix" data-row="4">
+                    <div class="key-group">
+                        <div class="key" data-key="numpad 0"></div>
+                        <div class="key" data-key="numpad ."></div>
+                        <div class="filler"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
