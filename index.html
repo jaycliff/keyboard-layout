@@ -32,9 +32,10 @@
             
             #keyboard-map-wrap {
                 border-radius: 2px;
-                float: left;
-                margin-top: 20px;
-                padding: 16px 12px 64px;
+                display: inline-block;
+                margin-top: 240px;
+                padding: 16px 12px 32px;
+                vertical-align: top;
             }
             
             #keyboard-map-wrap .section {
@@ -102,7 +103,7 @@
             #keyboard-map-wrap .key.selected {
                 background-color: #ff8888;
                 border: solid 1px red;
-                cursor: default;
+                /* cursor: default; */
             }
             
             #keyboard-map-wrap .row.shift-up .key {
@@ -225,176 +226,176 @@
             });
         </script>
     </head>
-    <body>
+    <body style="text-align: center;">
         <div id="keyboard-map-wrap">
             <div class="section" data-section="0">
                 <div class="row clearfix" data-row="0">
                     <div class="key-group">
-                        <div class="key" data-key="esc">Esc</div>
+                        <div class="key" data-key="esc" data-which="27">Esc</div>
                     </div>
                     <div class="key-group">
-                        <div class="key" data-key="f1">F1</div>
-                        <div class="key" data-key="f2">F2</div>
-                        <div class="key" data-key="f3">F3</div>
-                        <div class="key" data-key="f4">F4</div>
+                        <div class="key" data-key="f1" data-which="112">F1</div>
+                        <div class="key" data-key="f2" data-which="113">F2</div>
+                        <div class="key" data-key="f3" data-which="114">F3</div>
+                        <div class="key" data-key="f4" data-which="115">F4</div>
                     </div>
                     <div class="key-group">
-                        <div class="key" data-key="f5">F5</div>
-                        <div class="key" data-key="f6">F6</div>
-                        <div class="key" data-key="f7">F7</div>
-                        <div class="key" data-key="f8">F8</div>
+                        <div class="key" data-key="f5" data-which="116">F5</div>
+                        <div class="key" data-key="f6" data-which="117">F6</div>
+                        <div class="key" data-key="f7" data-which="118">F7</div>
+                        <div class="key" data-key="f8" data-which="119">F8</div>
                     </div>
                     <div class="key-group">
-                        <div class="key" data-key="f9">F9</div>
-                        <div class="key" data-key="f10">F10</div>
-                        <div class="key" data-key="f11">F11</div>
-                        <div class="key" data-key="f12">F12</div>
+                        <div class="key" data-key="f9" data-which="120">F9</div>
+                        <div class="key" data-key="f10" data-which="121">F10</div>
+                        <div class="key" data-key="f11" data-which="122">F11</div>
+                        <div class="key" data-key="f12" data-which="123">F12</div>
                     </div>
                     <div class="key-group">
-                        <div class="key" data-key="print screen">PrSc</div>
-                        <div class="key" data-key="scroll lock"></div>
-                        <div class="key" data-key="pause"></div>
+                        <div class="dummy" data-key="print screen">PrSc</div>
+                        <div class="key" data-key="scroll lock" data-which="145"></div>
+                        <div class="key" data-key="pause" data-which="19"></div>
                     </div>
                 </div>
                 <div class="row clearfix" data-row="1">
                     <div class="key-group">
-                        <div class="key" data-key="`"></div>
-                        <div class="key" data-key="1"></div>
-                        <div class="key" data-key="2"></div>
-                        <div class="key" data-key="3"></div>
-                        <div class="key" data-key="4"></div>
-                        <div class="key" data-key="5"></div>
-                        <div class="key" data-key="6"></div>
-                        <div class="key" data-key="7"></div>
-                        <div class="key" data-key="8"></div>
-                        <div class="key" data-key="9"></div>
-                        <div class="key" data-key="0"></div>
-                        <div class="key" data-key="-"></div>
-                        <div class="key" data-key="="></div>
-                        <div class="key" data-key="backspace"></div>
+                        <div class="key" data-key="`" data-which="192"></div>
+                        <div class="key" data-key="1" data-which="49"></div>
+                        <div class="key" data-key="2" data-which="50"></div>
+                        <div class="key" data-key="3" data-which="51"></div>
+                        <div class="key" data-key="4" data-which="52"></div>
+                        <div class="key" data-key="5" data-which="53"></div>
+                        <div class="key" data-key="6" data-which="54"></div>
+                        <div class="key" data-key="7" data-which="55"></div>
+                        <div class="key" data-key="8" data-which="56"></div>
+                        <div class="key" data-key="9" data-which="57"></div>
+                        <div class="key" data-key="0" data-which="48"></div>
+                        <div class="key" data-key="-" data-which="189"></div>
+                        <div class="key" data-key="=" data-which="187"></div>
+                        <div class="key" data-key="backspace" data-which="8"></div>
                     </div>
                     <div class="key-group">
-                        <div class="key" data-key="insert"></div>
-                        <div class="key" data-key="home"></div>
-                        <div class="key" data-key="page up"></div>
+                        <div class="key" data-key="insert" data-which="45"></div>
+                        <div class="key" data-key="home" data-which="36"></div>
+                        <div class="key" data-key="page up" data-which="33"></div>
                     </div>
                 </div>
                 <div class="row clearfix" data-row="2">
                     <div class="key-group">
-                        <div class="key" data-key="tab"></div>
-                        <div class="key" data-key="q"></div>
-                        <div class="key" data-key="w"></div>
-                        <div class="key" data-key="e"></div>
-                        <div class="key" data-key="r"></div>
-                        <div class="key" data-key="t"></div>
-                        <div class="key" data-key="y"></div>
-                        <div class="key" data-key="u"></div>
-                        <div class="key" data-key="i"></div>
-                        <div class="key" data-key="o"></div>
-                        <div class="key" data-key="p"></div>
-                        <div class="key" data-key="["></div>
-                        <div class="key" data-key="]"></div>
-                        <div class="key" data-key="\"></div>
+                        <div class="key" data-key="tab" data-which="9"></div>
+                        <div class="key" data-key="q" data-which="81"></div>
+                        <div class="key" data-key="w" data-which="87"></div>
+                        <div class="key" data-key="e" data-which="69"></div>
+                        <div class="key" data-key="r" data-which="82"></div>
+                        <div class="key" data-key="t" data-which="84"></div>
+                        <div class="key" data-key="y" data-which="89"></div>
+                        <div class="key" data-key="u" data-which="85"></div>
+                        <div class="key" data-key="i" data-which="73"></div>
+                        <div class="key" data-key="o" data-which="79"></div>
+                        <div class="key" data-key="p" data-which="80"></div>
+                        <div class="key" data-key="[" data-which="219"></div>
+                        <div class="key" data-key="]" data-which="221"></div>
+                        <div class="key" data-key="\" data-which=""></div>
                     </div>
                     <div class="key-group">
-                        <div class="key" data-key="delete"></div>
-                        <div class="key" data-key="end"></div>
-                        <div class="key" data-key="page down"></div>
+                        <div class="key" data-key="delete" data-which="46"></div>
+                        <div class="key" data-key="end" data-which="35"></div>
+                        <div class="key" data-key="page down" data-which="34"></div>
                     </div>
                 </div>
                 <div class="row clearfix" data-row="3">
                     <div class="key-group">
-                        <div class="key" data-key="caps lock"></div>
-                        <div class="key" data-key="a"></div>
-                        <div class="key" data-key="s"></div>
-                        <div class="key" data-key="d"></div>
-                        <div class="key" data-key="f"></div>
-                        <div class="key" data-key="g"></div>
-                        <div class="key" data-key="h"></div>
-                        <div class="key" data-key="j"></div>
-                        <div class="key" data-key="k"></div>
-                        <div class="key" data-key="l"></div>
-                        <div class="key" data-key=";"></div>
-                        <div class="key" data-key="'"></div>
-                        <div class="key" data-key="enter"></div>
+                        <div class="key" data-key="caps lock" data-which="20"></div>
+                        <div class="key" data-key="a" data-which="65"></div>
+                        <div class="key" data-key="s" data-which="83"></div>
+                        <div class="key" data-key="d" data-which="68"></div>
+                        <div class="key" data-key="f" data-which="70"></div>
+                        <div class="key" data-key="g" data-which="71"></div>
+                        <div class="key" data-key="h" data-which="72"></div>
+                        <div class="key" data-key="j" data-which="74"></div>
+                        <div class="key" data-key="k" data-which="75"></div>
+                        <div class="key" data-key="l" data-which="76"></div>
+                        <div class="key" data-key=";" data-which="186"></div>
+                        <div class="key" data-key="'" data-which="222"></div>
+                        <div class="key" data-key="enter" data-which="13"></div>
                     </div>
                 </div>
                 <div class="row clearfix" data-row="4">
                     <div class="key-group">
-                        <div class="key" data-key="left shift"></div>
-                        <div class="key" data-key="z"></div>
-                        <div class="key" data-key="x"></div>
-                        <div class="key" data-key="c"></div>
-                        <div class="key" data-key="v"></div>
-                        <div class="key" data-key="b"></div>
-                        <div class="key" data-key="n"></div>
-                        <div class="key" data-key="m"></div>
-                        <div class="key" data-key=","></div>
-                        <div class="key" data-key="."></div>
-                        <div class="key" data-key="/"></div>
-                        <div class="key" data-key="right shift"></div>
+                        <div class="key" data-key="left shift" data-which="16"></div>
+                        <div class="key" data-key="z" data-which="90"></div>
+                        <div class="key" data-key="x" data-which="88"></div>
+                        <div class="key" data-key="c" data-which="67"></div>
+                        <div class="key" data-key="v" data-which="86"></div>
+                        <div class="key" data-key="b" data-which="66"></div>
+                        <div class="key" data-key="n" data-which="78"></div>
+                        <div class="key" data-key="m" data-which="77"></div>
+                        <div class="key" data-key="," data-which="188"></div>
+                        <div class="key" data-key="." data-which="190"></div>
+                        <div class="key" data-key="/" data-which="191"></div>
+                        <div class="key" data-key="right shift" data-which="16"></div>
                     </div>
                     <div class="key-group">
                         <div class="filler"></div>
-                        <div class="key" data-key="arrow up"></div>
+                        <div class="key" data-key="arrow up" data-which="38"></div>
                         <div class="filler"></div>
                     </div>
                 </div>
                 <div class="row clearfix" data-row="5">
                     <div class="key-group">
-                        <div class="key" data-key="left ctrl"></div>
+                        <div class="key" data-key="left ctrl" data-which="17"></div>
                         <div class="dummy" data-key="windows"></div>
-                        <div class="key" data-key="left alt"></div>
-                        <div class="key" data-key="spacebar"></div>
-                        <div class="key" data-key="right alt"></div>
+                        <div class="key" data-key="left alt" data-which="18"></div>
+                        <div class="key" data-key="spacebar" data-which="32"></div>
+                        <div class="key" data-key="right alt" data-which="18"></div>
                         <div class="dummy" data-key="fn"></div>
-                        <div class="key" data-key="context"></div>
-                        <div class="key" data-key="right ctrl"></div>
+                        <div class="key" data-key="context" data-which="93"></div>
+                        <div class="key" data-key="right ctrl" data-which="17"></div>
                     </div>
                     <div class="key-group">
-                        <div class="key" data-key="arrow left"></div>
-                        <div class="key" data-key="arrow down"></div>
-                        <div class="key" data-key="arrow right"></div>
+                        <div class="key" data-key="arrow left" data-which="37"></div>
+                        <div class="key" data-key="arrow down" data-which="40"></div>
+                        <div class="key" data-key="arrow right" data-which="39"></div>
                     </div>
                 </div>
             </div>
             <div class="section" data-section="1" data-info="numpad">
                 <div class="row clearfix" data-row="0">
                     <div class="key-group">
-                        <div class="key" data-key="num lock"></div>
-                        <div class="key" data-key="numpad /"></div>
-                        <div class="key" data-key="numpad *"></div>
-                        <div class="key" data-key="numpad -"></div>
+                        <div class="key" data-key="num lock" data-which="144"></div>
+                        <div class="key" data-key="numpad /" data-which="111"></div>
+                        <div class="key" data-key="numpad *" data-which="106"></div>
+                        <div class="key" data-key="numpad -" data-which="109"></div>
                     </div>
                 </div>
                 <div class="row clearfix" data-row="1">
                     <div class="key-group">
-                        <div class="key" data-key="numpad 7"></div>
-                        <div class="key" data-key="numpad 8"></div>
-                        <div class="key" data-key="numpad 9"></div>
-                        <div class="key" data-key="numpad +"></div>
+                        <div class="key" data-key="numpad 7" data-which="103"></div>
+                        <div class="key" data-key="numpad 8" data-which="104"></div>
+                        <div class="key" data-key="numpad 9" data-which="105"></div>
+                        <div class="key" data-key="numpad +" data-which="107"></div>
                     </div>
                 </div>
                 <div class="row shift-up clearfix" data-row="2">
                     <div class="key-group">
-                        <div class="key" data-key="numpad 4"></div>
-                        <div class="key" data-key="numpad 5"></div>
-                        <div class="key" data-key="numpad 6"></div>
+                        <div class="key" data-key="numpad 4" data-which="100"></div>
+                        <div class="key" data-key="numpad 5" data-which="101"></div>
+                        <div class="key" data-key="numpad 6" data-which="102"></div>
                         <div class="filler"></div>
                     </div>
                 </div>
                 <div class="row clearfix" data-row="3">
                     <div class="key-group">
-                        <div class="key" data-key="numpad 1"></div>
-                        <div class="key" data-key="numpad 2"></div>
-                        <div class="key" data-key="numpad 3"></div>
-                        <div class="key" data-key="numpad enter"></div>
+                        <div class="key" data-key="numpad 1" data-which="97"></div>
+                        <div class="key" data-key="numpad 2" data-which="98"></div>
+                        <div class="key" data-key="numpad 3" data-which="99"></div>
+                        <div class="key" data-key="numpad enter" data-which="13"></div>
                     </div>
                 </div>
                 <div class="row shift-up clearfix" data-row="4">
                     <div class="key-group">
-                        <div class="key" data-key="numpad 0"></div>
-                        <div class="key" data-key="numpad ."></div>
+                        <div class="key" data-key="numpad 0" data-which="96"></div>
+                        <div class="key" data-key="numpad ." data-which="110"></div>
                         <div class="filler"></div>
                     </div>
                 </div>
