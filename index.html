@@ -101,9 +101,14 @@
             }
             
             #keyboard-map-wrap .key.selected {
-                background-color: #ff8888;
-                border: solid 1px red;
+                background-color: #12c885;
+                border: solid 1px #02b875;
                 /* cursor: default; */
+            }
+            
+            #keyboard-map-wrap .key.activated {
+                background-color: #ff8888;
+                border-color: #ff4444;
             }
             
             #keyboard-map-wrap .row.shift-up .key {
@@ -207,23 +212,88 @@
         <!-- <link rel="stylesheet" type="text/css" href="style.css" /> -->
         <script type="text/javascript" src="jquery-1.11.3.min.js"></script>
         <script type="text/javascript">
-            jQuery(document).ready(function ($) {
+            Uint8Array.prototype.reset = function reset() {
                 "use strict";
-                var selected = null;
-                $('.key').on('mousedown touchstart', function (event) {
-                    event.preventDefault();
-                    if (this !== selected) {
-                        if (selected) {
-                            selected.classList.remove('selected');
+                var k, len;
+                for (k = 0, len = this.length; k < len; k += 1) {
+                    this[k] = 0;
+                }
+                return this;
+            };
+            (function ($) {
+                "use strict";
+                var $document = $(document), $window = $(window);
+                $document.ready(function ($) {
+                    var map_of_keys = {}, selected = null, key_status = new Uint8Array(300);
+                    $('#keyboard-map-wrap').on('mousedown touchstart select', '.key', function (event) {
+                        event.preventDefault();
+                        if (this !== selected) {
+                            if (selected) {
+                                selected.classList.remove('selected');
+                            }
+                            selected = this;
+                            this.classList.add('selected');
+                        } else {
+                            this.classList.remove('selected');
+                            selected = null;
                         }
-                        selected = this;
-                        this.classList.add('selected');
-                    } else {
-                        this.classList.remove('selected');
-                        selected = null;
-                    }
+                    }).find('.key').each(function () {
+                        var which = +this.getAttribute('data-which'), $this = $(this);
+                        if (!map_of_keys[which]) {
+                            map_of_keys[which] = [];
+                        }
+                        map_of_keys[which].push($this);
+                        if (which === 101) {
+                            which = 12;
+                            if (!map_of_keys[which]) {
+                                map_of_keys[which] = [];
+                            }
+                            map_of_keys[which].push($this);
+                        }
+                    }).end().css('opacity', 0.2);
+                    $document.on('keydown keyup', function (event) {
+                        var k, len, which = event.which, key_list = map_of_keys[which];
+                        event.preventDefault();
+                        switch (event.type) {
+                        case 'keydown':
+                            if (key_status[which] === 0) {
+                                key_status[which] = 1;
+                                console.log('keydown: ' + which);
+                                if (key_list) {
+                                    for (k = 0, len = key_list.length; k < len; k += 1) {
+                                        key_list[k].addClass('activated');
+                                    }
+                                }
+                            }
+                            break;
+                        case 'keyup':
+                            if (key_status[which] === 1) {
+                                key_status[which] = 0;
+                                console.log('keyup: ' + which);
+                                if (key_list) {
+                                    for (k = 0, len = key_list.length; k < len; k += 1) {
+                                        key_list[k].removeClass('activated');
+                                    }
+                                }
+                            }
+                            break;
+                        }
+                    });
+                    $window.on('blur', function () {
+                        var key, k, len, key_list;
+                        for (key in map_of_keys) {
+                            if (map_of_keys.hasOwnProperty(key)) {
+                                key_list = map_of_keys[key];
+                                for (k = 0, len = key_list.length; k < len; k += 1) {
+                                    key_list[k].removeClass('activated');
+                                }
+                            }
+                        }
+                        key_status.reset();
+                    });
+                    console.log(map_of_keys);
                 });
-            });
+            }(typeof jQuery === "function" && jQuery));
         </script>
     </head>
     <body style="text-align: center;">
@@ -295,7 +365,7 @@
                         <div class="key" data-key="p" data-which="80"></div>
                         <div class="key" data-key="[" data-which="219"></div>
                         <div class="key" data-key="]" data-which="221"></div>
-                        <div class="key" data-key="\" data-which=""></div>
+                        <div class="key" data-key="\" data-which="220"></div>
                     </div>
                     <div class="key-group">
                         <div class="key" data-key="delete" data-which="46"></div>
