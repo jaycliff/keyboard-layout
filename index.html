@@ -40,6 +40,11 @@
             
             #keyboard-map-wrap .section {
                 float: left;
+                margin-left: 12px;
+            }
+            
+            #keyboard-map-wrap .section:first-child {
+                margin-left: 0;
             }
             
             #keyboard-map-wrap .row {
@@ -186,24 +191,8 @@
                 margin-left: 20px;
             }
             
-            #keyboard-map-wrap .section[data-section="0"] div[data-row="0"] .key-group:nth-of-type(5) {
-                margin-left: 12px;
-            }
-            
-            #keyboard-map-wrap .section[data-section="0"] .row:nth-of-type(2) {
+            #keyboard-map-wrap .section .row:nth-of-type(2) {
                 margin-top: 6px;
-            }
-            
-            #keyboard-map-wrap .section[data-section="0"] div[data-row="1"] .key-group,
-            #keyboard-map-wrap .section[data-section="0"] div[data-row="2"] .key-group,
-            #keyboard-map-wrap .section[data-section="0"] div[data-row="4"] .key-group,
-            #keyboard-map-wrap .section[data-section="0"] div[data-row="5"] .key-group {
-                margin-left: 12px;
-            }
-            
-            #keyboard-map-wrap .section[data-info="numpad"] {
-                margin-left: 12px;
-                margin-top: 24px;
             }
         </style>
         <!--
@@ -223,9 +212,625 @@
             (function ($) {
                 "use strict";
                 var $document = $(document), $window = $(window);
+                $.fn.createPCKeyboardMap = function createPCKeyboardMap() {
+                    var keyboard_tree = [
+                        [
+                            [
+                                [
+                                    {
+                                        "type": "key",
+                                        "data-key": "esc",
+                                        "data-which": "27"
+                                    }
+                                ],
+                                [
+                                    {
+                                        "type": "key",
+                                        "data-key": "f1",
+                                        "data-which": "112"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "f2",
+                                        "data-which": "113"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "f3",
+                                        "data-which": "114"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "f4",
+                                        "data-which": "115"
+                                    }
+                                ],
+                                [
+                                    {
+                                        "type": "key",
+                                        "data-key": "f5",
+                                        "data-which": "116"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "f6",
+                                        "data-which": "117"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "f7",
+                                        "data-which": "118"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "f8",
+                                        "data-which": "119"
+                                    }
+                                ],
+                                [
+                                    {
+                                        "type": "key",
+                                        "data-key": "f9",
+                                        "data-which": "120"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "f10",
+                                        "data-which": "121"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "f11",
+                                        "data-which": "122"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "f12",
+                                        "data-which": "123"
+                                    }
+                                ]
+                            ],
+                            [
+                                [
+                                    {
+                                        "type": "key",
+                                        "data-key": "`",
+                                        "data-which": "192"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "1",
+                                        "data-which": "49"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "2",
+                                        "data-which": "50"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "3",
+                                        "data-which": "51"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "4",
+                                        "data-which": "52"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "5",
+                                        "data-which": "53"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "6",
+                                        "data-which": "54"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "7",
+                                        "data-which": "55"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "8",
+                                        "data-which": "56"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "9",
+                                        "data-which": "57"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "0",
+                                        "data-which": "48"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "-",
+                                        "data-which": "189"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "=",
+                                        "data-which": "187"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "backspace",
+                                        "data-which": "8"
+                                    }
+                                ]
+                            ],
+                            [
+                                [
+                                    {
+                                        "type": "key",
+                                        "data-key": "tab",
+                                        "data-which": "9"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "q",
+                                        "data-which": "81"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "w",
+                                        "data-which": "87"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "e",
+                                        "data-which": "69"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "r",
+                                        "data-which": "82"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "t",
+                                        "data-which": "84"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "y",
+                                        "data-which": "89"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "u",
+                                        "data-which": "85"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "i",
+                                        "data-which": "73"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "o",
+                                        "data-which": "79"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "p",
+                                        "data-which": "80"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "[",
+                                        "data-which": "219"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "]",
+                                        "data-which": "221"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "\\",
+                                        "data-which": "220"
+                                    }
+                                ]
+                            ],
+                            [
+                                [
+                                    {
+                                        "type": "key",
+                                        "data-key": "caps lock",
+                                        "data-which": "20"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "a",
+                                        "data-which": "65"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "s",
+                                        "data-which": "83"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "d",
+                                        "data-which": "68"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "f",
+                                        "data-which": "70"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "g",
+                                        "data-which": "71"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "h",
+                                        "data-which": "72"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "j",
+                                        "data-which": "74"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "k",
+                                        "data-which": "75"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "l",
+                                        "data-which": "76"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": ";",
+                                        "data-which": "186"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "'",
+                                        "data-which": "222"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "enter",
+                                        "data-which": "13"
+                                    }
+                                ]
+                            ],
+                            [
+                                [
+                                    {
+                                        "type": "key",
+                                        "data-key": "left shift",
+                                        "data-which": "16"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "z",
+                                        "data-which": "90"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "x",
+                                        "data-which": "88"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "c",
+                                        "data-which": "67"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "v",
+                                        "data-which": "86"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "b",
+                                        "data-which": "66"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "n",
+                                        "data-which": "78"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "m",
+                                        "data-which": "77"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": ",",
+                                        "data-which": "188"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": ".",
+                                        "data-which": "190"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "/",
+                                        "data-which": "191"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "right shift",
+                                        "data-which": "16"
+                                    }
+                                ]
+                            ],
+                            [
+                                [
+                                    {
+                                        "type": "key",
+                                        "data-key": "left ctrl",
+                                        "data-which": "17"
+                                    },
+                                    {
+                                        "type": "dummy",
+                                        "data-key": "windows"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "left alt",
+                                        "data-which": "18"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "spacebar",
+                                        "data-which": "32"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "right alt",
+                                        "data-which": "18"
+                                    },
+                                    {
+                                        "type": "dummy",
+                                        "data-key": "fn"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "context",
+                                        "data-which": "93"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "right ctrl",
+                                        "data-which": "17"
+                                    }
+                                ]
+                            ]
+                        ],
+                        [
+                            [
+                                [
+                                    {
+                                        "type": "dummy",
+                                        "data-key": "print screen"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "scroll lock",
+                                        "data-which": "145"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "pause",
+                                        "data-which": "19"
+                                    }
+                                ]
+                            ],
+                            [
+                                [
+                                    {
+                                        "type": "key",
+                                        "data-key": "insert",
+                                        "data-which": "45"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "home",
+                                        "data-which": "36"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "page up",
+                                        "data-which": "33"
+                                    }
+                                ]
+                            ],
+                            [
+                                [
+                                    {
+                                        "type": "key",
+                                        "data-key": "delete",
+                                        "data-which": "46"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "end",
+                                        "data-which": "35"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "page down",
+                                        "data-which": "34"
+                                    }
+                                ]
+                            ],
+                            [
+                                [
+                                    null,
+                                    null,
+                                    null
+                                ]
+                            ],
+                            [
+                                [
+                                    null,
+                                    {
+                                        "type": "key",
+                                        "data-key": "arrow up",
+                                        "data-which": "38"
+                                    },
+                                    null
+                                ]
+                            ],
+                            [
+                                [
+                                    {
+                                        "type": "key",
+                                        "data-key": "arrow left",
+                                        "data-which": "37"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "arrow down",
+                                        "data-which": "40"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "arrow right",
+                                        "data-which": "39"
+                                    }
+                                ]
+                            ]
+                        ],
+                        [
+                            [
+                                [
+                                    null,
+                                    null,
+                                    null,
+                                    null
+                                ]
+                            ],
+                            [
+                                [
+                                    {
+                                        "type": "key",
+                                        "data-key": "num lock",
+                                        "data-which": "144"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "numpad /",
+                                        "data-which": "111"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "numpad *",
+                                        "data-which": "106"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "numpad -",
+                                        "data-which": "109"
+                                    }
+                                ]
+                            ],
+                            [
+                                [
+                                    {
+                                        "type": "key",
+                                        "data-key": "numpad 7",
+                                        "data-which": "103"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "numpad 8",
+                                        "data-which": "104"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "numpad 9",
+                                        "data-which": "105"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "numpad +",
+                                        "data-which": "107"
+                                    }
+                                ]
+                            ],
+                            [
+                                [
+                                    {
+                                        "type": "key",
+                                        "data-key": "numpad 4",
+                                        "data-which": "100"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "numpad 5",
+                                        "data-which": "101"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "numpad 6",
+                                        "data-which": "102"
+                                    },
+                                    null
+                                ]
+                            ],
+                            [
+                                [
+                                    {
+                                        "type": "key",
+                                        "data-key": "numpad 1",
+                                        "data-which": "97"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "numpad 2",
+                                        "data-which": "98"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "numpad 3",
+                                        "data-which": "99"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "numpad enter",
+                                        "data-which": "13"
+                                    }
+                                ]
+                            ],
+                            [
+                                [
+                                    {
+                                        "type": "key",
+                                        "data-key": "numpad 0",
+                                        "data-which": "96"
+                                    },
+                                    {
+                                        "type": "key",
+                                        "data-key": "numpad .",
+                                        "data-which": "110"
+                                    },
+                                    null
+                                ]
+                            ]
+                        ]
+                    ], keyboard_map_wrap = document.createElement('span');
+                };
                 $document.ready(function ($) {
-                    var map_of_keys = {}, selected = null, key_status = new Uint8Array(300);
-                    $('#keyboard-map-wrap').on('mousedown touchstart select', '.key', function (event) {
+                    var map_of_keys = {}, selected = null, key_status = new Uint8Array(300), $keyboard_map_wrap = $('#keyboard-map-wrap');
+                    $keyboard_map_wrap.width($keyboard_map_wrap.width()).height($keyboard_map_wrap.height()).on('mousedown touchstart select', '.key', function (event) {
                         event.preventDefault();
                         if (this !== selected) {
                             if (selected) {
@@ -295,6 +900,46 @@
                         //key_status.reset();
                     });
                     console.log(map_of_keys);
+                    
+                    // Convert to JSON
+                    (function () {
+                        var k, len, map = [];
+                        $('#keyboard-map-wrap').find('.section').each(function () {
+                            var section = [], $section = $(this);
+                            map.push(section);
+                            $section.find('.row').each(function () {
+                                var row = [], $row = $(this);
+                                section.push(row);
+                                $row.find('.key-group').each(function () {
+                                    var key_group = [], $key_group = $(this);
+                                    row.push(key_group);
+                                    $key_group.find('.dummy, .filler, .key').each(function () {
+                                        var object, type = this.getAttribute('class');
+                                        switch (type) {
+                                        case 'filler':
+                                            object = null;
+                                            break;
+                                        case 'dummy':
+                                            object = {
+                                                "type": type,
+                                                "data-key": this.getAttribute('data-key')
+                                            };
+                                            break;
+                                        case 'key':
+                                            object = {
+                                                "type": type,
+                                                "data-key": this.getAttribute('data-key'),
+                                                "data-which": this.getAttribute('data-which')
+                                            };
+                                            break;
+                                        }
+                                        key_group.push(object);
+                                    });
+                                });
+                            });
+                        });
+                        window.keyboard_map = map;
+                    }());
                 });
             }(typeof jQuery === "function" && jQuery));
         </script>
@@ -324,11 +969,6 @@
                         <div class="key" data-key="f11" data-which="122">F11</div>
                         <div class="key" data-key="f12" data-which="123">F12</div>
                     </div>
-                    <div class="key-group">
-                        <div class="dummy" data-key="print screen">PrSc</div>
-                        <div class="key" data-key="scroll lock" data-which="145"></div>
-                        <div class="key" data-key="pause" data-which="19"></div>
-                    </div>
                 </div>
                 <div class="row clearfix" data-row="1">
                     <div class="key-group">
@@ -347,11 +987,6 @@
                         <div class="key" data-key="=" data-which="187"></div>
                         <div class="key" data-key="backspace" data-which="8"></div>
                     </div>
-                    <div class="key-group">
-                        <div class="key" data-key="insert" data-which="45"></div>
-                        <div class="key" data-key="home" data-which="36"></div>
-                        <div class="key" data-key="page up" data-which="33"></div>
-                    </div>
                 </div>
                 <div class="row clearfix" data-row="2">
                     <div class="key-group">
@@ -369,11 +1004,6 @@
                         <div class="key" data-key="[" data-which="219"></div>
                         <div class="key" data-key="]" data-which="221"></div>
                         <div class="key" data-key="\" data-which="220"></div>
-                    </div>
-                    <div class="key-group">
-                        <div class="key" data-key="delete" data-which="46"></div>
-                        <div class="key" data-key="end" data-which="35"></div>
-                        <div class="key" data-key="page down" data-which="34"></div>
                     </div>
                 </div>
                 <div class="row clearfix" data-row="3">
@@ -408,11 +1038,6 @@
                         <div class="key" data-key="/" data-which="191"></div>
                         <div class="key" data-key="right shift" data-which="16"></div>
                     </div>
-                    <div class="key-group">
-                        <div class="filler"></div>
-                        <div class="key" data-key="arrow up" data-which="38"></div>
-                        <div class="filler"></div>
-                    </div>
                 </div>
                 <div class="row clearfix" data-row="5">
                     <div class="key-group">
@@ -425,6 +1050,45 @@
                         <div class="key" data-key="context" data-which="93"></div>
                         <div class="key" data-key="right ctrl" data-which="17"></div>
                     </div>
+                </div>
+            </div>
+            <div class="section" data-section="1" data-info="action">
+                <div class="row clearfix" data-row="0">
+                    <div class="key-group">
+                        <div class="dummy" data-key="print screen">PrSc</div>
+                        <div class="key" data-key="scroll lock" data-which="145"></div>
+                        <div class="key" data-key="pause" data-which="19"></div>
+                    </div>
+                </div>
+                <div class="row clearfix" data-row="1">
+                    <div class="key-group">
+                        <div class="key" data-key="insert" data-which="45"></div>
+                        <div class="key" data-key="home" data-which="36"></div>
+                        <div class="key" data-key="page up" data-which="33"></div>
+                    </div>
+                </div>
+                <div class="row clearfix" data-row="2">
+                    <div class="key-group">
+                        <div class="key" data-key="delete" data-which="46"></div>
+                        <div class="key" data-key="end" data-which="35"></div>
+                        <div class="key" data-key="page down" data-which="34"></div>
+                    </div>
+                </div>
+                <div class="row clearfix" data-row="3">
+                    <div class="key-group">
+                        <div class="filler"></div>
+                        <div class="filler"></div>
+                        <div class="filler"></div>
+                    </div>
+                </div>
+                <div class="row clearfix" data-row="4">
+                    <div class="key-group">
+                        <div class="filler"></div>
+                        <div class="key" data-key="arrow up" data-which="38"></div>
+                        <div class="filler"></div>
+                    </div>
+                </div>
+                <div class="row clearfix" data-row="5">
                     <div class="key-group">
                         <div class="key" data-key="arrow left" data-which="37"></div>
                         <div class="key" data-key="arrow down" data-which="40"></div>
@@ -435,13 +1099,21 @@
             <div class="section" data-section="1" data-info="numpad">
                 <div class="row clearfix" data-row="0">
                     <div class="key-group">
+                        <div class="filler"></div>
+                        <div class="filler"></div>
+                        <div class="filler"></div>
+                        <div class="filler"></div>
+                    </div>
+                </div>
+                <div class="row clearfix" data-row="1">
+                    <div class="key-group">
                         <div class="key" data-key="num lock" data-which="144"></div>
                         <div class="key" data-key="numpad /" data-which="111"></div>
                         <div class="key" data-key="numpad *" data-which="106"></div>
                         <div class="key" data-key="numpad -" data-which="109"></div>
                     </div>
                 </div>
-                <div class="row clearfix" data-row="1">
+                <div class="row clearfix" data-row="2">
                     <div class="key-group">
                         <div class="key" data-key="numpad 7" data-which="103"></div>
                         <div class="key" data-key="numpad 8" data-which="104"></div>
@@ -449,7 +1121,7 @@
                         <div class="key" data-key="numpad +" data-which="107"></div>
                     </div>
                 </div>
-                <div class="row shift-up clearfix" data-row="2">
+                <div class="row shift-up clearfix" data-row="3">
                     <div class="key-group">
                         <div class="key" data-key="numpad 4" data-which="100"></div>
                         <div class="key" data-key="numpad 5" data-which="101"></div>
@@ -457,7 +1129,7 @@
                         <div class="filler"></div>
                     </div>
                 </div>
-                <div class="row clearfix" data-row="3">
+                <div class="row clearfix" data-row="4">
                     <div class="key-group">
                         <div class="key" data-key="numpad 1" data-which="97"></div>
                         <div class="key" data-key="numpad 2" data-which="98"></div>
@@ -465,7 +1137,7 @@
                         <div class="key" data-key="numpad enter" data-which="13"></div>
                     </div>
                 </div>
-                <div class="row shift-up clearfix" data-row="4">
+                <div class="row shift-up clearfix" data-row="5">
                     <div class="key-group">
                         <div class="key" data-key="numpad 0" data-which="96"></div>
                         <div class="key" data-key="numpad ." data-which="110"></div>
