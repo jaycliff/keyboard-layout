@@ -283,13 +283,16 @@
                         var key, k, len, key_list;
                         for (key in map_of_keys) {
                             if (map_of_keys.hasOwnProperty(key)) {
-                                key_list = map_of_keys[key];
-                                for (k = 0, len = key_list.length; k < len; k += 1) {
-                                    key_list[k].removeClass('activated');
+                                if (key_status[key] === 1) {
+                                    key_status[key] = 0;
+                                    key_list = map_of_keys[key];
+                                    for (k = 0, len = key_list.length; k < len; k += 1) {
+                                        key_list[k].removeClass('activated');
+                                    }
                                 }
                             }
                         }
-                        key_status.reset();
+                        //key_status.reset();
                     });
                     console.log(map_of_keys);
                 });
