@@ -1,0 +1,201 @@
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: block;
+    font-size: 0;
+    height: 0;
+    line-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    visibility: hidden;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.keyboard-map-wrap {
+    display: inline-block;
+}
+
+.keyboard-map-wrap span {
+    display: block;
+}
+
+.keyboard-map-wrap,
+.keyboard-map-wrap .key {
+    border: solid 1px #c0c0c0;
+}
+
+.keyboard-map-wrap .key {
+    border-radius: 2px;
+}
+
+.keyboard-map-wrap {
+    border-radius: 2px;
+    display: inline-block;
+    /* margin-top: 240px; */
+    padding: 14px 14px 20px;
+    vertical-align: top;
+}
+
+.keyboard-map-wrap .section {
+    float: left;
+    margin-left: 12px;
+}
+
+.keyboard-map-wrap .section:first-child {
+    margin-left: 0;
+}
+
+.keyboard-map-wrap .row {
+    margin-top: 2px;
+}
+
+.keyboard-map-wrap .row.shift-up {
+    margin-top: -2px;
+}
+
+.keyboard-map-wrap .row:first-child {
+    margin-top: 0;
+}
+
+.keyboard-map-wrap .key-group {
+    float: left;
+}
+
+.keyboard-map-wrap .row.shift-up .key-group {
+    margin-top: -18px;
+}
+
+.keyboard-map-wrap .section .row .key-group:first-child {
+    margin-left: 0 !important;
+}
+
+.keyboard-map-wrap .key,
+.keyboard-map-wrap .dummy,
+.keyboard-map-wrap .filler {
+    border-radius: 2px;
+    float: left;
+    font-family: Arial;
+    font-size: 8px;
+    height: 16px;
+    line-height: 16px;
+    margin-left: 2px;
+    overflow: hidden;
+    text-align: center;
+    text-indent: -999em;
+    width: 16px;
+}
+
+.keyboard-map-wrap .filler {
+    border: solid 1px #c0c0c0;
+    visibility: hidden;
+}
+
+.keyboard-map-wrap .dummy {
+    border: solid 1px #c0c0c0;
+    opacity: 0.5;
+}
+
+.keyboard-map-wrap .key {
+    cursor: pointer;
+}
+
+.keyboard-map-wrap .key:hover {
+    background-color: #808080;
+}
+
+.keyboard-map-wrap .key.selected {
+    background-color: #0fb175;
+    border: solid 1px #00e28f;
+    /* background-color: #12c885; */
+    /* border: solid 1px #02b875; */
+    /* cursor: default; */
+}
+
+.keyboard-map-wrap .key.activated {
+    background-color: #ff6262;
+    border-color: #ffadad;
+    /* background-color: #ff8888; */
+    /* border-color: #ff4444; */
+}
+
+.keyboard-map-wrap .row.shift-up .key {
+    position: relative;
+    z-index: 1;
+}
+
+.keyboard-map-wrap .filler:first-child,
+.keyboard-map-wrap .dummy:first-child,
+.keyboard-map-wrap .key:first-child {
+    margin-left: 0;
+}
+
+.keyboard-map-wrap .key[data-key="backspace"] {
+    width: 36px;
+}
+
+.keyboard-map-wrap .key[data-key="tab"] {
+    width: 26px;
+}
+
+.keyboard-map-wrap .key[data-key="\\"] {
+    width: 26px;
+}
+
+.keyboard-map-wrap .key[data-key="caps lock"] {
+    width: 32px;
+}
+
+.keyboard-map-wrap .key[data-key="enter"] {
+    width: 40px;
+}
+
+.keyboard-map-wrap .key[data-key="left shift"] {
+    width: 42px;
+}
+
+.keyboard-map-wrap .key[data-key="right shift"] {
+    width: 50px;
+}
+
+.keyboard-map-wrap .key[data-key="left ctrl"],
+.keyboard-map-wrap .key[data-key="right ctrl"] {
+    width: 26px;
+}
+
+.keyboard-map-wrap .dummy[data-key="windows"],
+.keyboard-map-wrap .key[data-key="left alt"],
+.keyboard-map-wrap .key[data-key="right alt"],
+.keyboard-map-wrap .dummy[data-key="fn"],
+.keyboard-map-wrap .key[data-key="context"] {
+    width: 22px;
+}
+
+.keyboard-map-wrap .key[data-key="spacebar"] {
+    width: 106px;
+}
+
+.keyboard-map-wrap .key[data-key="numpad +"],
+.keyboard-map-wrap .key[data-key="numpad enter"] {
+    height: 36px;
+    position: relative;
+    z-index: 1;
+}
+
+.keyboard-map-wrap .key[data-key="numpad 0"] {
+    width: 36px;
+}
+
+.keyboard-map-wrap .section[data-section="0"] span[data-row="0"] .key-group {
+    margin-left: 13px;
+}
+
+.keyboard-map-wrap .section[data-section="0"] span[data-row="0"] .key-group:nth-of-type(2) {
+    margin-left: 20px;
+}
+
+.keyboard-map-wrap .section .row:nth-of-type(2) {
+    margin-top: 6px;
+}

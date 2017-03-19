@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+        <title>Keyboard Map JS</title>
+        <style type="text/css">
+        </style>
+        <!--
+        <link rel="shortcut icon" href="package/style/core/images/favicon.ico" />
+        -->
+        <link rel="stylesheet" type="text/css" href="pc-keyboard-map.css" />
+        <script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="pc-keyboard-map.js"></script>
+        <script type="text/javascript">
+            jQuery(document).ready(function () {
+                var pc_keyboard_map = $.createPCKeyboardMap().attachTo('#wrapper');
+                pc_keyboard_map.on('select', function (event) {
+                    console.log(event.which);
+                }).on('deselect', function (event) {
+                    console.log('Nothing selected');
+                });
+                window.pc_keyboard_map = pc_keyboard_map;
+            });
+        </script>
+    </head>
+    <body style="text-align: center;">
+        <div id="wrapper"></div>
+    </body>
+</html>
