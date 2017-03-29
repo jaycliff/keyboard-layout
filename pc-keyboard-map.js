@@ -786,11 +786,11 @@
     }());
     $.createPCKeyboardMap = function createPCKeyboardMap() {
         var keyboard_data = createKeyboardStructure(),
-            selected = -1,
+            selected = -1 | 0,
             enable_keyboard_capture = true,
             key_status = new Uint8Array(300),
-            select_event = $.Event('select'),
-            deselect_event = $.Event('deselect'),
+            select_event = { type: 'select', which: 0 },
+            deselect_event = { type: 'deselect', which: 0 },
             $wrapper = keyboard_data.wrapper,
             $keys = keyboard_data.wrapper,
             keycode_to_key_map = keyboard_data.keycode_to_key_map,
@@ -840,9 +840,10 @@
                 $wrapper.width($wrapper.width()).height($wrapper.height());
             },
             pc_keyboard_map_object = {
-                selectByKeycode: function selectByKeycode(keycode) {
+                selectByKeycode: function selectByKeycode(keycode, trigger_event) {
                     var which = +keycode, key_list, k, len;
                     if (which !== selected) {
+                        pc_keyboard_map_object.deselect();
                         key_list = keycode_to_key_map[which];
                         if (key_list) {
                             selected = which;
@@ -850,19 +851,27 @@
                                 key_list[k].classList.add('selected');
                             }
                         }
+                        if (trigger_event) {
+                            select_event.which = which;
+                            $pc_keyboard_map_object.trigger(select_event);
+                        }
                         //select_event.which = which;
                         //$pc_keyboard_map_object.trigger(select_event);
                     }
                     return pc_keyboard_map_object;
                 },
-                deselect: function deselect() {
+                deselect: function deselect(trigger_event) {
                     var key_list, k, len;
                     if (selected !== -1) {
                         key_list = keycode_to_key_map[selected];
-                        selected = -1;
                         for (k = 0, len = key_list.length; k < len; k += 1) {
                             key_list[k].classList.remove('selected');
                         }
+                        if (trigger_event) {
+                            deselect_event.which = selected;
+                            $pc_keyboard_map_object.trigger(deselect_event);
+                        }
+                        selected = -1;
                         //$pc_keyboard_map_object.trigger(deselect_event);
                     }
                     return pc_keyboard_map_object;
@@ -946,6 +955,7 @@
                     }
                 }
                 selected = -1;
+                deselect_event.which = which;
                 $pc_keyboard_map_object.trigger(deselect_event);
             }
         });
